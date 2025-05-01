@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: microservicios_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  estudiante:
+    build:
+      context: ./estudiante
+      dockerfile: Dockerfile
+    container_name: estudiante_service
+    ports:
+      - "8000:8000"
+    depends_on:
+      mysql:
+        condition: service_started
+    environment:
+      DB_HOST: mysql
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: microservicios_db
+
+volumes:
+  mysql_data:
