@@ -1,33 +1,45 @@
-version: "3.8"
+version: "3.9"
 
 services:
-  mysql-db:
+  db:
     image: mysql:8.0
     container_name: mysql-db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: microservivios
-      MYSQL_USER: user
-      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: colegio
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
     volumes:
-      - mysql-db-data:/var/lib/mysql
-    ports:
-      - "33060:3306"
-    
-  estudiante:
-    build: .
+      - mysql-data:/var/lib/mysql
+    networks:
+      - colegio-net
+
+  estudiante-service:
+    build:
+      context: ./estudiante
     container_name: estudiante-service
-    depends_on:
-      - mysql-db
     ports:
-      - "8000:8000"
-    environment:
-      - DB_HOST=mysql-db
-      - DB_PORT=3306
-      - DB_USER=user
-      - DB_PASSWORD=secret
-      - DB_NAME=microservivios
+      - "8001:8001"
+    depends_on:
+      - db
+    networks:
+      - colegio-net
+
+  evaluacion-service:
+    build:
+      context: ./evaluacion
+    container_name: evaluacion-service
+    ports:
+      - "8002:8002"
+    depends_on:
+      - db
+    networks:
+      - colegio-net
 
 volumes:
-  mysql-db-data:
+  mysql-data:
+
+networks:
+  colegio-net:
+    driver: bridge
