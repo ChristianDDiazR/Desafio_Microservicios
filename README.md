@@ -9,24 +9,6 @@ Todo el sistema se orquesta con `docker-compose`.
 
 ---
 
-## 🧱 Estructura del Proyecto
-/Desafio_Microservicios
-├── docker-compose.yml
-├── estudiante/
-│ ├── main.py
-│ ├── models.py
-│ ├── schemas.py
-│ └── database.py
-├── evaluacion/
-│ ├── main.py
-│ ├── models.py
-│ ├── schemas.py
-│ └── database.py
-└── mysql-init/
-└── init.sql
-
----
-
 ## 🚀 Tecnologías Utilizadas
 
 - Python 3.10
@@ -43,6 +25,10 @@ Todo el sistema se orquesta con `docker-compose`.
 1. Asegúrate de tener **Docker** y **Docker Compose** instalados.
 2. Clona este repositorio.
 3. Ejecuta en la raíz del proyecto:
+```bash
+docker-compose down -v  # solo si quieres reiniciar completamente la BD
+docker-compose up --build
+```
 
 🛠️ Endpoints
 📘 Estudiante Service – http://localhost:8001
@@ -98,7 +84,3 @@ Body (JSON):
   "asignatura": "Física",
   "evaluacion": 7.0
 }
-
-```bash
-docker-compose down -v  # solo si quieres reiniciar completamente la BD
-docker-compose up --build
