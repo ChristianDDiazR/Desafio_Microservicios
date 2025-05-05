@@ -35,19 +35,19 @@ docker-compose up --build
 🔹 Obtener todos los estudiantes
 Método: GET
 
-URL: /estudiantes
+Ejemplo: http://localhost:8001/estudiantes/
 
 🔹 Obtener un estudiante por RUT
 Método: GET
 
 URL: /estudiantes/{rut}
 
-Ejemplo: /estudiantes/12345678-9
+Ejemplo: http://localhost:8001/estudiantes/12345678-9
 
 🔹 Crear un nuevo estudiante
 Método: POST
 
-URL: /estudiantes
+URL: http://localhost:8001/estudiantes/
 
 Body (JSON):
 {
@@ -61,19 +61,19 @@ Body (JSON):
 🔹 Obtener todas las evaluaciones
 Método: GET
 
-URL: /evaluaciones
+Ejemplo: http://localhost:8002/evaluaciones/
 
 🔹 Obtener una evaluación por ID
 Método: GET
 
 URL: /evaluaciones/{id}
 
-Ejemplo: /evaluaciones/eval-001
+Ejemplo: http://localhost:8002/evaluaciones/eval-001
 
 🔹 Crear una nueva evaluación
 Método: POST
 
-URL: /evaluaciones
+URL: http://localhost:8002/evaluaciones/
 
 Body (JSON):
 
