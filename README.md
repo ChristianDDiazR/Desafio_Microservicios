@@ -26,7 +26,7 @@ Todo el sistema se orquesta con `docker-compose`.
 2. Clona este repositorio.
 3. Ejecuta en la raíz del proyecto:
 ```bash
-docker-compose down -v  # solo si quieres reiniciar completamente la BD
+docker-compose down -v  # por si se quiere reiniciar completamente la BD
 docker-compose up --build
 ```
 
